@@ -37,11 +37,9 @@ DEBUG = False
 # CORRECT SYNTAX (Commas must be outside the quotes)
 ALLOWED_HOSTS = ['*']
 
-
 OPENAI_KEY = os.getenv('OPENAI_KEY')
 MONGO_URL = os.getenv('mongodb+srv://magpayo:mslmagpayo123@cluster0.hnhjqub.mongodb.net/')
 
-ALLOWED_HOSTS = []
 
 
 # Application definition
