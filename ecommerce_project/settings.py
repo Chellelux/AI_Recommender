@@ -34,6 +34,7 @@ SECRET_KEY = os.getenv('^h01bjr+%r4u)1+d=yd0zkw90-(4z))10q@1p7r1cgq3v0s62(', 'fa
 DEBUG = False
 
 
+# CORRECT SYNTAX (Commas must be outside the quotes)
 ALLOWED_HOSTS = [
     'ai-recommender-3-atn2.onrender.com',
     '.onrender.com',
