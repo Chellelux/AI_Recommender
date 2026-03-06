@@ -1,15 +1,15 @@
-import openai
+import os
+from openai import OpenAI  # New Import Style
 from django.shortcuts import render, redirect
 from .models import Product
 from django.conf import settings
 
-openai.api_key = settings.OPENAI_KEY
-
+# Initialize the client
+client = OpenAI(api_key=settings.OPENAI_KEY)
 
 def product_list(request):
     products = Product.objects.all()
     return render(request, 'store/product_list.html', {'products': products})
-
 
 def add_product(request):
     if request.method == "POST":
@@ -20,17 +20,15 @@ def add_product(request):
         prompt = f"Generate 5 short comma separated tags for this product: {name}. Description: {description}"
 
         try:
-            response = openai.ChatCompletion.create(
+            # Modern OpenAI Syntax
+            response = client.chat.completions.create(
                 model="gpt-3.5-turbo",
-                messages=[
-                    {"role": "user", "content": prompt}
-                ]
+                messages=[{"role": "user", "content": prompt}]
             )
-
-            generated_tags = response['choices'][0]['message']['content'].strip()
-
+            generated_tags = response.choices[0].message.content.strip()
         except Exception as e:
-            generated_tags = "electronics,gadget"
+            print(f"OpenAI Error: {e}")
+            generated_tags = "electronics, gadget"
 
         Product.objects.create(
             name=name,
@@ -38,7 +36,6 @@ def add_product(request):
             price=price,
             tags=generated_tags
         )
-
         return redirect('product_list')
 
     return render(request, 'store/add_product.html')

@@ -11,9 +11,11 @@
     <h3>{{ product.name }}</h3>
     <p>{{ product.description }}</p>
     
-    <div class="tags">
-        {% for tag in product.tags.split|slice:":5" %}
-            <span class="badge">{{ tag|strip|capfirst }}</span>
+    <div class="tags" style="margin-top: 10px;">
+    <strong>Tags:</strong> 
+    <span class="badge" style="background: #eee; padding: 2px 8px; border-radius: 12px; font-size: 0.8em;">
+        {{ product.tags }}
+    </span>
         {% endfor %}
     </div>
 </div>
