@@ -35,7 +35,7 @@ DEBUG = False
 
 
 # CORRECT SYNTAX (Commas must be outside the quotes)
-ALLOWED_HOSTS = ['ai-recommender-3-atn2.onrender.com','.onrender.com','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 OPENAI_KEY = os.getenv('OPENAI_KEY')
