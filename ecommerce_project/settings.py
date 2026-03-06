@@ -33,12 +33,14 @@ load_dotenv()
 SECRET_KEY = os.getenv('^h01bjr+%r4u)1+d=yd0zkw90-(4z))10q@1p7r1cgq3v0s62(', 'fallback_dev_secret')
 DEBUG = False
 
+
 ALLOWED_HOSTS = [
-    'ai-recommender-3-atn2.onrender.com', 
-    '.onrender.com', 
-    'localhost', 
+    'ai-recommender-3-atn2.onrender.com',
+    '.onrender.com',
+    'localhost',
     '127.0.0.1'
 ]
+
 
 OPENAI_KEY = os.getenv('OPENAI_KEY')
 MONGO_URL = os.getenv('mongodb+srv://magpayo:mslmagpayo123@cluster0.hnhjqub.mongodb.net/')
