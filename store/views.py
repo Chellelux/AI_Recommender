@@ -3,6 +3,7 @@ from openai import OpenAI  # New Import Style
 from django.shortcuts import render, redirect
 from .models import Product
 from django.conf import settings
+from store.models import Product
 
 # Initialize the client
 api_key = os.getenv("OPENAI_API_KEY")
