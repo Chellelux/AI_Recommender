@@ -11,7 +11,12 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 from dotenv import load_dotenv
 from pathlib import Path
+from mongoengine import connect
 
+connect(
+    db='ecommerce_db',
+    host='mongodb+srv://magpayo:mslmagpayo123@cluster0.hnhjqub.mongodb.net/?appName=Cluster0'
+)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -87,16 +92,6 @@ WSGI_APPLICATION = 'ecommerce_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'ecommerce_db',
-        'ENFORCE_SCHEMA': False,
-        'CLIENT':{
-            'host': 'mongodb+srv://magpayo:mslmagpayo123@cluster0.hnhjqub.mongodb.net/?appName=Cluster0'
-        }
-    }
-}
 
 
 # Password validation
