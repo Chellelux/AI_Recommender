@@ -13,10 +13,12 @@ from dotenv import load_dotenv
 from pathlib import Path
 import os
 
-MONGO_URL = os.getenv(
-    "MONGO_URL",
-    "mongodb://localhost:27017/ecommerce_db"
-)
+load_dotenv()
+
+MONGO_URL = os.environ.get("MONGO_URL")
+# Fallback for local development if the environment variable isn't set
+if not MONGO_URL:
+    MONGO_URL = "mongodb://localhost:27017/ecommerce_db"
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -88,6 +90,19 @@ WSGI_APPLICATION = 'ecommerce_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': 'ecommerce_db',
+        'ENFORCE_SCHEMA': False,
+        'CLIENT': {
+            'host': MONGO_URL,
+            'tls': True,
+            'tlsAllowInvalidCertificates': True,
+            'waitQueueTimeoutMS': 30000, 
+        }
+    }
+}
 
 
 # Password validation
