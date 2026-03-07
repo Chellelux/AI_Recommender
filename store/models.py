@@ -13,10 +13,7 @@ class Product(Document):
     def __str__(self):
         return self.name
 
-    meta = {
-        'collection': 'products',  # Optional: specify MongoDB collection name
-        'ordering': ['-created_at']
-    }
+    meta = {'db_alias': 'default'}
 
 # Example: Add more models if needed
 class Customer(Document):
