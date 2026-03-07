@@ -39,7 +39,8 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = ['*']
 
 OPENAI_KEY = os.getenv('OPENAI_KEY')
-MONGO_URL = os.getenv('mongodb+srv://magpayo:mslmagpayo123@cluster0.hnhjqub.mongodb.net/')
+# settings.py
+MONGO_URL = 'mongodb://localhost:27017/ecommerce_db'
 
 
 
