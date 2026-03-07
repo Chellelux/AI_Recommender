@@ -5,7 +5,7 @@ from .models import Product
 from django.conf import settings
 
 # Initialize the client
-client = OpenAI(api_key=settings.OPENAI_KEY)
+client = OpenAI(api_key=os.getenv("OPENAI_KEY"))
 
 def product_list(request):
     products = Product.objects.all()
