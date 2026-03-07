@@ -40,8 +40,8 @@ ALLOWED_HOSTS = ['*']
 
 OPENAI_KEY = os.getenv('OPENAI_KEY')
 # settings.py
-MONGO_URL = 'mongodb://localhost:27017/ecommerce_db'
-
+MONGO_URL = os.getenv('MONGO_URL', 'mongodb://localhost:27017/ecommerce_db')
+connect(host=MONGO_URL)
 
 
 # Application definition
