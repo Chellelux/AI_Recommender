@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 from dotenv import load_dotenv
 from pathlib import Path
-from mongoengine import connect, disconnect
 import os
 
 MONGO_URL = os.getenv(
@@ -19,18 +18,6 @@ MONGO_URL = os.getenv(
     "mongodb://localhost:27017/ecommerce_db"
 )
 
-# Safely disconnect any previous default connection
-try:
-    disconnect(alias='default')
-except:
-    pass
-
-# Connect
-connect(host=MONGO_URL)
-print(f"Connected to MongoDB at: {MONGO_URL}")
-
-load_dotenv()
-connect()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
