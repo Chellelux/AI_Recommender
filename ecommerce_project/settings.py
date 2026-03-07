@@ -12,11 +12,10 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from dotenv import load_dotenv
 from pathlib import Path
 from mongoengine import connect
+import os
 
-connect(
-    db='ecommerce_db',
-    host='mongodb+srv://magpayo:mslmagpayo123@cluster0.hnhjqub.mongodb.net/?appName=Cluster0'
-)
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,18 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)6bqlt9^7og)sgjdk%zit(h)tf=^jk)^gnfusn88i$+j6$^k4q'
+SECURITY_KEY = 'django-insecure-)6bqlt9^7og)sgjdk%zit(h)tf=^jk)^gnfusn88i$+j6$^k4q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-import os
-
-load_dotenv()
-
 # Environment variables
 SECRET_KEY = os.getenv('^h01bjr+%r4u)1+d=yd0zkw90-(4z))10q@1p7r1cgq3v0s62(', 'fallback_dev_secret')
-DEBUG = False
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 
 # CORRECT SYNTAX (Commas must be outside the quotes)
@@ -129,3 +124,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [BASE_DIR / "static"]
